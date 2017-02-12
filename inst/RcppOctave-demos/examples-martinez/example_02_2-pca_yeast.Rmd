@@ -29,6 +29,7 @@ library(RcppOctave)
 .CallOctave("version")
 ```
 
+This loads the Matlab object `yeast`.
 ```{r}
 f_pca_yeast <- OctaveFunction("
 function [eigval, pervar, g, propvar, Xp] = scree()
@@ -84,7 +85,6 @@ Xp <- pca_yeast$Xp
 ```
 
 ```{r}
-
 # Build scree plot
 plot(1:length(eigvale), eigvale, 
      type = "l", 
