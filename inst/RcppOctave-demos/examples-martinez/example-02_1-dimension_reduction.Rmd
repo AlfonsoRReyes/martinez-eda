@@ -70,6 +70,8 @@ P
 Xpx
 ```
 
+Plotting in R.
+Orthogonal projection pending.
 ```{r fig.asp=1}
 
 
