@@ -45,7 +45,7 @@ S = svd(A);
 % 3 output variables: complete SVD decomposition
 [U, S, V] = svd(A);
 ```
-
+Examples in ex_function.m belong to RcppOctave package.
 ```{r}
 # source example function definitions from RcppOctave installation
 sourceExamples("ex_functions.m")
