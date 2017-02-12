@@ -1,0 +1,31 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This example doesn't work because of problem with statistics package
+
+```{r}
+library(RcppOctave)
+.CallOctave("version")
+```
+
+```{r}
+f_stocks <- OctaveFunction("
+function [x] = stocks() 
+  pkg load statistics
+  load stockreturns
+  % Loads up a variable called stocks.
+  % Perform factor analysis:3 factors,default rotation.
+  [LamVrot,PsiVrot] = factoran(stocks,3);
+  x = 1;
+
+end
+                           ")
+```
+
+
+```{r}
+stocks <- f_stocks()
+```
+
