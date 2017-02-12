@@ -24,6 +24,7 @@ knitr::opts_chunk$set(echo = TRUE,
                       comment = NA)
 ```
 
+Ensure that RcppOctave is installed and loaded.
 ```{r}
 library(RcppOctave)
 .CallOctave("version")
@@ -57,6 +58,7 @@ function [Y] = stdLeukemia()
 end")
 ```
 
+Imgae plot in R.
 ```{r, fig.asp=1}
 Y <- fY()
 
