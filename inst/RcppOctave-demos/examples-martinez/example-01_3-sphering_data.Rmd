@@ -24,6 +24,7 @@ knitr::opts_chunk$set(echo = TRUE,
                       comment = NA)
 ```
 
+Has RcppOctave been installed and loaded?
 ```{r}
 library(RcppOctave)
 .CallOctave("version")
@@ -49,6 +50,8 @@ end
 ")
 ```
 
+
+> Why is this not working?
 
 ```{r}
 X <- fX()
