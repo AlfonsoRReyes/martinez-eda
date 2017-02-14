@@ -3,13 +3,30 @@ title: "R Notebook"
 output: html_notebook
 ---
 
+### Set up project folders with `rprojroot` package
+```{r results='hold'}
+# package rprojroot required
+library(rprojroot)
 
-```{r}
+root <- rprojroot::is_rstudio_project
+root_file <- root$make_fix_file()
+# root$find_file("REAME.md")
+root_file()
+cat("Setting up the project folders:\n")
+project.data <- root_file("data")
+project.extdata <- root_file("inst/extdata")
+project.R <- root_file("R")
+project.matlab <- root_file("inst/matlab")
 
+project.data
+project.extdata
+project.R
+project.matlab
 ```
 
 ```{r fig.asp=1}
 library("plot3D")
+
 n <- 500
 theta <- runif(n =  n, min = 0, max = 4*pi)
 
@@ -38,6 +55,17 @@ scatter3D(x, y, z,
           ticktype = "detailed"
           )
 ```
+
+
+
+
+
+
+
+
+
+
+
 
 
 
