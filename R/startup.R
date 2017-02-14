@@ -10,11 +10,12 @@ loadPaths <- function() {
   project.R <- root_file("R")
   project.notebooks <- root_file("inst/notebooks")
   project.matlab <- root_file("inst/matlab")
-  
-  return(list(data = project.data, 
+  ret <- list(data = project.data, 
               extdata = project.extdata,
               R = project.R,
               notebooks = project.notebooks,
               matlab = project.matlab
-  ))
+  )
+  print(ret)
+  return(ret)
 }
