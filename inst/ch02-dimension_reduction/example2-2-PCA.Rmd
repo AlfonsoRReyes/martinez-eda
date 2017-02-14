@@ -11,21 +11,28 @@ output:
 knitr::opts_chunk$set(echo = TRUE, comment = NA, error = TRUE)
 ```
 
+```{r}
+library(rprojroot)
+root <- rprojroot::is_rstudio_project$make_fix_file()
+source(paste(root("R"), "startup.R", sep = "/"))
+pathTo <- loadPaths()
+```
 
-Example 2.2
+
+## Example 2.2
 We show how to perform _Principal Component Analysis_ (PCA) using the yeast cell cycle data set. Recall from Chapter 1 that these contain 384 genes corresponding to five phases, measured at 17 time points. We first load the data and center each row.
 
 
 ## Scree Plot
 A graphical way of determining the number of PCs to retain is called the `scree` plot. The original name and idea is from Cattell [1966], and it is a plot of $l_k$ (the eigenvalue) versus $k$ (the index of the eigenvalue). In some cases, we might plot the log of the eigenvalues when the first eigenvalues are very large. This type of plot is called a `log-eigenvalue` or LEV plot. To use the scree plot, one looks for the ‘elbow’ in the curve or the place where the curve levels off and becomes almost flat. Another way to look at this is by the slopes of the lines connecting the points. When the slopes start to level off and become less steep, that is the number of PCs one should keep.￿
 
-
 Loading the Matlab software array:
 ```{r message=FALSE}
 library(R.matlab)
 
 # read the Matlab array
-yeast.mat <- readMat("../data/yeast.mat", fixNames = TRUE)
+yeast.mat <- paste(pathTo$extdata, "yeast.mat", sep = "/")
+yeast.mat <- readMat(yeast.mat, fixNames = TRUE)
 ```
 
 
@@ -51,7 +58,8 @@ n;p
 > We will create athe function `m.repmat()`.
 
 ```{r}
-source("../R/matlab.R")
+matlab.R <- paste(pathTo$R, "matlab.R", sep = "/")
+source(matlab.R)
 r <- m.repmat(colSums(data)/n, n, 1)
 m.size(r)
 ```
@@ -80,7 +88,7 @@ dim(mcs)
 ```
 
 ```{r}
-source("../R/matlab.R")
+# source("../R/matlab.R")
 
 # create a new matrix 384x17
 r <- m.repmat(mcs, n, 1)
@@ -93,7 +101,7 @@ dim(r)
 > The `colSums(data)` vector has to be converted first to a 1x17 matrix, otherwise the `m.repmat` custom function will give an incorrect matrix size.
 
 ```{r}
-source("../R/matlab.R")
+# source("../R/matlab.R")
 
 # column sums
 cs <- colSums(data) / n        # numeric vector, no matrix
@@ -108,7 +116,7 @@ dim(datac)
 We are going to use the covariance matrix in PCA since the variables have common units. The reader is asked to explore the correlation matrix approach in the exercises. The eig function is used to calculate the eigenvalues and eigenvectors. MATLAB returns the eigenvalues in a diagonal matrix, and they are in ascending order, so they must be flipped to get the scree plot.
 
 ```{r}
-source("../R/matlab.R")
+# source("../R/matlab.R")
 
 # find the covariance matrix_type
 covm <- cov(datac)
