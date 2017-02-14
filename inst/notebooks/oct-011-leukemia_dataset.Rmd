@@ -58,7 +58,7 @@ function [Y] = stdLeukemia()
 end")
 ```
 
-Imgae plot in R.
+Image plot in R.
 ```{r, fig.asp=1}
 Y <- fY()
 
