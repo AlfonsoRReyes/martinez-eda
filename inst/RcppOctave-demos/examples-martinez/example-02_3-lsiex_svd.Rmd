@@ -29,8 +29,7 @@ library(RcppOctave)
 .CallOctave("version")
 ```
 
-
-
+This calls `lsiex` package in Matlab.
 ```{r}
 f_lsiex <- OctaveFunction("
 function [u, v, d, cosq1a, cosq2a, cosq1b, cosq2b] = lsiex()
