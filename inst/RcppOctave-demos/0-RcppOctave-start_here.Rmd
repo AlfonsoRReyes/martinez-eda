@@ -27,6 +27,7 @@ knitr::opts_chunk$set(echo = TRUE,
 
 ```{r}
 library(RcppOctave)
+
 .CallOctave("version")
 
 .CallOctave("sqrt", 10)

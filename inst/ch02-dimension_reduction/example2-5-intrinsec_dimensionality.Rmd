@@ -4,6 +4,7 @@ output: html_notebook
 ---
 
 ### Set up project folders with `rprojroot` package
+
 ```{r results='hold'}
 # package rprojroot required
 library(rprojroot)
@@ -58,18 +59,40 @@ scatter3D(x, y, z,
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 ```{r}
-ydist <- dist(X)
+# get the distance using Octave's pdist function
+# this returns the interpoint distances
+ydist <- .O$pdist(X)
 ```
+
+## Load a matlab file in memory
+Source idpettis.m file.
+```{r}
+# clear all session
+o_clear(all = TRUE)
+o_ls()
+
+# source example file from RcppOctave installation
+mfile <- paste(project.matlab, "idpettis.m", sep = "/")
+mfile
+```
+
+Optional. Do not need to run.
+```{r}
+cat(readLines(mfile), sep = "\n")
+```
+
+## Load and run
+Loads idpettis and checks it loaded.
+```{r}
+o_source(mfile)
+o_ls()
+```
+
+Call idpettis() with arguments `ydist` and `n`:
+```{r}
+.O$idpettis(ydist, n)
+```
+
+
 
