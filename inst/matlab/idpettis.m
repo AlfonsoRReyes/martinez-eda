@@ -47,7 +47,7 @@ dhatold = realmax;
 maxiter = 100;
 epstol = 0.01;
 i = 0;
-while abs(dhatold - dhat) >= epstol & i < maxiter
+while abs(dhatold - dhat) >= epstol && i < maxiter
     % Adjust the y values by adding logGRk
     logGRk = (1/dhat)*log(k)+gammaln(k)-gammaln(k+1/dhat);
     [p,s] = polyfit(logk,logrk + logGRk,1);
