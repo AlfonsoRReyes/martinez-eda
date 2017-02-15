@@ -1,5 +1,5 @@
 ---
-title: "R Notebook"
+title: "02-1 Dimension Reduction - Octave"
 output:
   html_document: default
   html_notebook: default

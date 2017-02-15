@@ -51,7 +51,6 @@ end
 ```
 
 
-> Why is this not working?
 
 ```{r}
 X <- fX()
