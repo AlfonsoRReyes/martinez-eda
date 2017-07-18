@@ -22,7 +22,7 @@ Loading the Matlab software array:
 library(R.matlab)
 
 # read the Matlab array
-software.mat <- readMat("../data/software.mat", fixNames = TRUE)
+software.mat <- readMat("../extdata/software.mat", fixNames = TRUE)
 ```
 
 
